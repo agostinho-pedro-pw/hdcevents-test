@@ -1,0 +1,12 @@
+*{
+    font-family: 'roboto';
+}
+#navbar img{
+    width: 50px;
+    height: 50px;
+}
+
+#event-img{
+    width: 150px;
+    height: 150px;
+}

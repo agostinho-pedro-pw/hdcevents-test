@@ -34,10 +34,21 @@ Route::get('/', function () {
     ]);
 
 });
-
+//Aprendendo mais sobre as rotas
 Route::get('/contacto', function () {
     return view('contact');
 });
-Route::get('/produto', function () {
-    return view('product');
+Route::get('/product', function () {
+
+    $busca = request('search');
+
+    return view('product',
+    [
+    "busca"=>$busca]);
+});
+//Trabalho com os parametros
+Route::get('/test/{id?}', function($id=null) {
+
+    return view('test',
+    ["id"=>$id]);
 });
