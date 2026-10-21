@@ -3,12 +3,16 @@
 @section('content')
 
 <script src="/JS/scripts.js"></script>
-<img class ="event-image" src="/img/event.png" alt="">
+<img class ="event-image" id="edit" src="/img/events.jpg" alt="">
+<ul class="test">
+        <li class="a agora">
+                <a href="#" class="leg"></a>
+        </li>
+</ul>
 <h1>Algum titulo: </h1>
 <!--
 
         Ultilizando de condição
-
         @if ($nome=="Agostinho")
         <p>Nome: {{$nome}}</p>
         @endif
@@ -21,10 +25,10 @@
 <!--Estruturas de repetição -->
 <!--
         @for($i=0; $i < count($array);$i++)
-            <p>{{$array[$i]}}-{{$i}}</p>
-            @if ($i==2)
-            <p>Sambaleta</p>
-            @endif
+        <p>{{$array[$i]}}-{{$i}}</p>
+        @if ($i==2)
+        <p>Sambaleta</p>
+        @endif
         @endfor
         @php 
         $nome="Agostinho";
@@ -40,4 +44,4 @@
 @endforeach-->
 <h1><a href="\contacto">contactos</a></h1>
 <h1><a href="\produto">Produtos</a></h1>
-@endsection
+@endsection 

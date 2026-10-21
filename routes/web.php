@@ -13,31 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 
 */
+//Usandos controles no laravel
+use App\Http\Controllers\EventController;
 
-Route::get('/', function () {
-    $nome = "Agostinho";
-    $idade =17;
+//Criando uma rota para o controller
+Route::get('/', [EventController::class, 'index']);
+Route::get('/events/create', [EventController::class, 'create']);
 
-    $array=[10,20,30,40,50];
-    //Criando array nome
-    $nomes=["Agostinho",
-    "Maria",
-    "Joana",
-    "Meury"];
-
-    return view('welcome',
-    ["nome" => $nome,
-    "idade"=>$idade, 
-    "profissao"=>"Programador",
-    "array"=>$array,
-    "nomes"=>$nomes
-    ]);
-
+//Aprendendo mais sobre as rotas paralelas/alternativas;
+Route::get('/contacto/{date?}', function ($date=null) {
+    return view('contact',['date' => $date]);
 });
-//Aprendendo mais sobre as rotas
-Route::get('/contacto', function () {
-    return view('contact');
-});
+
+//Usando o request para pegar o parametro da url
 Route::get('/product', function () {
 
     $busca = request('search');
@@ -46,9 +34,19 @@ Route::get('/product', function () {
     [
     "busca"=>$busca]);
 });
-//Trabalho com os parametros
+
+
+//Trabalho com os parametros opcinal
 Route::get('/test/{id?}', function($id=null) {
 
     return view('test',
     ["id"=>$id]);
+});
+
+Route::get('/pesquisa', function() {
+
+    $pesquisa=request('search');
+
+    return view('pesquisa',
+    ["pesquisa"=>$pesquisa]);
 });

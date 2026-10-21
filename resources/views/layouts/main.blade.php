@@ -10,34 +10,40 @@
 <!--CSS Bootstrap-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <!--CSS da aplicação-->
-        <link rel="stylesheet" href="/CSS/style.css">
+
+        <link rel="stylesheet" href="/CSS/style.css" id="">
         <script src="/JS/scripts.js"></script>
 
     </head>
     <body >
 <!--Diretiva pra a reutilizaçao de partes do codigo-->
 <header>
+<!--Trabalho com o Bootstrap-->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="collapse navbar-collapse" id="navbar">
+
             <a href="/" class="navbar-brand">
-                <img src="/img/9gag.png" alt="">
+                <img src="/img/9gag.png" alt="logo_hdcevents">
             </a>
+    
             <ul class="navbar-nav">
+
                 <li class="nav-item">
                     <a href="/" class="nav-link">Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Eventos</a>
+                    <a href="/events/create" class="nav-link">Criar Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Eventos</a>
+                    <a href="/" class="nav-link">Entrar</a>
                 </li>
-                <li class="nav-item">
-                    <a href="/" class="nav-link">Eventos</a>
-                </li>
+
             </ul>
+
         </div>
+
     </nav>
+
 </header>
         @yield('content')
     <footer>
