@@ -18,6 +18,8 @@
     <body >
 <!--Diretiva pra a reutilizaçao de partes do codigo-->
 <header>
+
+<!--Aprender mais sobre o bootstrap-->
 <!--Trabalho com o Bootstrap-->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="collapse navbar-collapse" id="navbar">
@@ -46,9 +48,11 @@
 
 </header>
         @yield('content')
+
     <footer>
         <p>HDC Events &copy; 2026</p>
     </footer>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
 
