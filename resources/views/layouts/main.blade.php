@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
+<head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,8 +11,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <!--CSS da aplicação-->
 
-        <link rel="stylesheet" href="/CSS/style.css" id="">
-        <script src="/JS/scripts.js"></script>
+<link rel="stylesheet" href="/CSS/style.css" id="">
+<script src="/JS/scripts.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     </head>
     <body >
@@ -47,8 +49,17 @@
     </nav>
 
 </header>
-        @yield('content')
+    <main class="container-fluid">
+        <!--Enviando a mensagem nao usuário-->
+        <div class="row">
+            @if(session('msg'))
+            <p class="msg">{{ session('msg')}}</p>
+            @endif
+            @yield('content')
+        </div>
+    </main>
 
+        <br><br><br><br>
     <footer>
         <p>HDC Events &copy; 2026</p>
     </footer>
