@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -11,56 +12,55 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-
 */
-//Usandos controles no laravel
+
+// Usando controllers no Laravel
 use App\Http\Controllers\EventController;
 
-//Criando uma rota para o controller
-Route::get('/', [EventController::class, 'index']);//para criar a home do nosso site
-Route::get('/events/create', [EventController::class, 'create']);//para a criação de um formaulario
-Route::get('/events/{id}', [EventController::class, 'show']);
-Route::post('/events', [EventController::class, 'store']);//para o envio dos dados do formulário, 'store' é uma convecção do Laravel
+// Criando rotas para o controller
+Route::get('/', [EventController::class, 'index']); // home do site
+Route::get('/events/create', [EventController::class, 'create']); // formulário de criação
+Route::get('/events/{id}', [EventController::class, 'show']); // detalhes do evento
+Route::post('/events', [EventController::class, 'store']); // envio dos dados do formulário ('store' é convenção do Laravel)
+Route::get('/home', [EventController::class, 'home']);//Os middleware são para, qdo o usuario tentar fazer alguma alteração no codigo,só irá prosseguir qdo estiver logado no sistema
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth');
+Route::get('/events/edit/{id}', [EventController::class, 'edit'])->middleware('auth');
+Route::put('/events/update/{id}', [EventController::class, 'update'])->middleware('auth');
 
-//Route::get('/{id?}', [EventController::class, 'store ']);
-
-//Route::get('/example', [event_Example::class, 'sudo']);
-//Aprendendo mais sobre as rotas paralelas/alternativas;
-
-Route::get('/contacto/{date?}', function ($date=null) {
-    return view('contact',['date' => $date]);
+// Aprendendo mais sobre as rotas paralelas/
+// Rotas de login, registo e logout (laravel/ui)
+Auth::routes();
+Route::get('/contacto/{date?}', function ($date = null) {
+    return view('contact', ['date' => $date]);
 });
 
 
+// Rotas de login, registo e logout (laravel/ui)
 
 /*
+--> Estudando Laravel: pegar os parâmetros da URL
 
--->Estudando do laravel para pegar   os parametros da url 
-
-//Usando o request para pegar o parametro da url
+// Usando o request para pegar o parâmetro da URL
 Route::get('/product', function () {
-
     $busca = request('search');
 
-    return view('product',
-    [
-    "busca"=>$busca]);
+    return view('product', [
+        'busca' => $busca
+    ]);
 });
 
-
-//Trabalho com os parametros opcinal
-Route::get('/test/{id?}', function($id=null) {
-
-    return view('test',
-    ["id"=>$id]);
+// Trabalhando com parâmetros opcionais
+Route::get('/test/{id?}', function ($id = null) {
+    return view('test', [
+        'id' => $id
+    ]);
 });
 
-Route::get('/pesquisa', function() {
+Route::get('/pesquisa', function () {
+    $pesquisa = request('search');
 
-    $pesquisa=request('search');
-
-    return view('pesquisa',
-    ["pesquisa"=>$pesquisa]);
+    return view('pesquisa', [
+        'pesquisa' => $pesquisa
+    ]);
 });
-
 */

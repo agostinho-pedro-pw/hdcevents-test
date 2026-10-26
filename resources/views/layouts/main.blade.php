@@ -11,7 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <!--CSS da aplicação-->
 
-<link rel="stylesheet" href="/CSS/style.css" id="">
+<link rel="stylesheet" href="/CSS/style.css">
 <script src="/JS/scripts.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -24,6 +24,12 @@
 <!--Aprender mais sobre o bootstrap-->
 <!--Trabalho com o Bootstrap-->
     <nav class="navbar navbar-expand-lg navbar-light">
+
+        <!--Botão do menu para ecrãs pequenos-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navbar">
 
             <a href="/" class="navbar-brand">
@@ -38,10 +44,28 @@
                 <li class="nav-item">
                     <a href="/events/create" class="nav-link">Criar Eventos</a>
                 </li>
+                @auth<!--Directiva para qdo já estou logado no site-->
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Entrar</a>
+                    <a href="/home" class="nav-link"><ion-icon name="calendar-outline"></ion-icon> Meus Eventos</a>
                 </li>
-
+                <li class="nav-item">
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <a href="/logout" class="nav-link" onclick="event.preventDefault();
+                        this.closest('form').submit();">
+                                <ion-icon name="log-out-outline"></ion-icon> Sair
+                        </a>
+                    </form>
+                </li>
+                @endauth
+                @guest<!--Directiva para qdo não já estou logado na«o site-->
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">Entrar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/register" class="nav-link">Registrar</a>
+                </li>
+                @endguest
             </ul>
 
         </div>
@@ -63,7 +87,7 @@
     <footer>
         <p>HDC Events &copy; 2026</p>
     </footer>
-    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+    <!--JS do Bootstrap (necessário para o menu em ecrãs pequenos)-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
-
